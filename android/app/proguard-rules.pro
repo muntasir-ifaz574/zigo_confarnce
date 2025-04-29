@@ -7,5 +7,5 @@
 -keep class im.zego.** { *; }
 -dontwarn im.zego.**
 
-# Suppress warnings for com.itgsa and ZEGO (optional, if warnings persist)
+
 -dontwarn com.itgsa.**
