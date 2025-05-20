@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:shikkha/src/views/ui/home_screen.dart';
+import 'package:shikkha/src/views/ui/login_screen.dart';
+import 'package:shikkha/src/views/ui/signup_screen.dart';
 import 'views/utils/colors.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ZigoApp extends StatelessWidget {
+  final String initialRoute;
+
+  const ZigoApp({Key? key, required this.initialRoute}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      title: 'Zigo',
       theme: ThemeData(
-        primarySwatch: MaterialColor(0xFF2C2C6A, colorMap)
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.grey[100],
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.black87),
+        ),
       ),
-      home: const HomeScreen(),
+      initialRoute: initialRoute,
+      routes: {
+        '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignupScreen(),
+        '/home': (context) => const HomeScreen(),
+      },
     );
   }
 }
