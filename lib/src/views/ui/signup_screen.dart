@@ -44,10 +44,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signup successful! Please verify your email.')),
+        const SnackBar(content: Text('Signup successful! Please verify your email. and login')),
       );
 
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/login');
     } catch (e) {
       if (!mounted) return;
       print(e.toString());
@@ -137,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       labelText: 'Gender',
                       border: OutlineInputBorder(),
                     ),
-                    items: ['Male', 'Female', 'Other']
+                    items: ['Male', 'Female']
                         .map((gender) => DropdownMenuItem(
                       value: gender,
                       child: Text(gender),

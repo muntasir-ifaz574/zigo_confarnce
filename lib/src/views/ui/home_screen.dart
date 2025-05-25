@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:shikkha/src/views/ui/video_conference_screen.dart';
 import 'package:shikkha/src/views/utils/colors.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _startMeeting() {
     final conferenceID = _generateConferenceID();
-
+    final userName = _profileData?['name'] ?? 'User_$userId';
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -127,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => VideoConferenceScreen(conferenceID: conferenceID),
+                  builder: (context) => VideoConferenceScreen(conferenceID: conferenceID,userName: userName,),
                 ),
               );
             },
@@ -140,6 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _joinMeeting() {
     final conferenceID = _conferenceIDController.text.trim();
+    final userName = _profileData?['name'] ?? 'User_$userId';
     if (conferenceID.isEmpty || conferenceID.length != 6 || !RegExp(r'^\d+$').hasMatch(conferenceID)) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please enter a valid 6-digit Conference ID')),
@@ -150,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => VideoConferenceScreen(conferenceID: conferenceID),
+        builder: (context) => VideoConferenceScreen(conferenceID: conferenceID,userName: userName,),
       ),
     );
   }

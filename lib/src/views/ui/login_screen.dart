@@ -22,22 +22,47 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       final supabase = Supabase.instance.client;
       final input = _emailOrPhoneController.text.trim();
-      await supabase.auth.signInWithPassword(
+
+      final response = await supabase.auth.signInWithPassword(
         email: input.contains('@') ? input : null,
         password: _passwordController.text.trim(),
       );
+
+      final user = response.user;
+      if (user == null) {
+        throw Exception('No user returned after login attempt');
+      }
+
+      if (user.emailConfirmedAt == null) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Please verify your email before logging in.'),
+          ),
+        );
+        await supabase.auth.signOut();
+        return;
+      }
+
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Login successful!')),
       );
       Navigator.pushReplacementNamed(context, '/home');
+    } on AuthException catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.message)),
+      );
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: ${e.toString()}')),
+        const SnackBar(content: Text('An unexpected error occurred')),
       );
     } finally {
-      setState(() => _isLoading = false);
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
   }
 
@@ -60,7 +85,11 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/hi.jpg',height: 150,width: 150,),
+                  Image.asset(
+                    'assets/images/hi.jpg',
+                    height: 150,
+                    width: 150,
+                  ),
                   const Text(
                     'Zigo',
                     style: TextStyle(
