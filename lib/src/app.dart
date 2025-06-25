@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shikkha/src/views/ui/home_screen.dart';
-import 'package:shikkha/src/views/ui/login_screen.dart';
-import 'package:shikkha/src/views/ui/signup_screen.dart';
+import 'package:zigo_app/src/views/ui/home_screen.dart';
+import 'package:zigo_app/src/views/ui/login_screen.dart';
+import 'package:zigo_app/src/views/ui/signup_screen.dart';
 import 'views/utils/colors.dart';
 
 class ZigoApp extends StatelessWidget {

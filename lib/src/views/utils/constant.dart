@@ -1,4 +1,4 @@
 class ZegoCloudKey {
-  static const appID = 1710817110;
-  static const appSignID = "ce4240afc824606e3963d3378aafdb1fd2f9098fcb23d89e632a1175e3b89cb9";
+  static const appID = 1724083946;
+  static const appSignID = "84e899e063e128c51fa5a32e90ab1b43df80ccaf71c71c99e658d9bce2fb57b7";
 }

@@ -10,5 +10,5 @@ class ResponseObject {
   int id;
   Object object;
 
-  ResponseObject({this.id: ResponseCode.NO_INTERNET_CONNECTION, required this.object});
+  ResponseObject({this.id = ResponseCode.NO_INTERNET_CONNECTION, required this.object});
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shikkha/src/app.dart';
+import 'package:zigo_app/src/app.dart';
 import 'src/views/ui/login_screen.dart';
 import 'src/views/ui/signup_screen.dart';
 import 'src/views/ui/home_screen.dart';

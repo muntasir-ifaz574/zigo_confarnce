@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:math';
-import 'package:shikkha/src/views/ui/video_conference_screen.dart';
-import 'package:shikkha/src/views/utils/colors.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
+import 'package:zigo_app/src/views/ui/video_conference_screen.dart';
+
+import '../utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

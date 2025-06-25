@@ -1,2 +1,0 @@
-C:/Users/TECH01/Desktop/garibook_project/shikkha/android/app/.cxx/RelWithDebInfo/593f3l6q/x86_64/CMakeFiles/edit_cache.dir
-C:/Users/TECH01/Desktop/garibook_project/shikkha/android/app/.cxx/RelWithDebInfo/593f3l6q/x86_64/CMakeFiles/rebuild_cache.dir
